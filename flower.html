@@ -7,10 +7,39 @@
     <link rel="stylesheet" href="flower.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>flowers</title>
+    <title>Page của Nghĩa</title>
 </head>
 <body class="container">
     <div class="romantic-glow"></div>
+    <!-- Nhạc nền tự động phát -->
+  <audio id="bg-music" src="assets/music.mp3" loop></audio>
+    <script>
+      // Phát nhạc ngay khi trang tải xong
+      window.addEventListener('DOMContentLoaded', function() {
+        var audio = document.getElementById('bg-music');
+        if (audio) {
+          setTimeout(function() {
+            var playPromise = audio.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(function(error) {
+                // Nếu trình duyệt chặn tự động phát, hiện nút để người dùng tự phát
+                var btn = document.createElement('button');
+                btn.innerText = 'Bật nhạc';
+                btn.style.position = 'fixed';
+                btn.style.bottom = '20px';
+                btn.style.right = '20px';
+                btn.style.zIndex = '9999';
+                btn.onclick = function() {
+                  audio.play();
+                  btn.remove();
+                };
+                document.body.appendChild(btn);
+              });
+            }
+          }, 300); // delay nhỏ để chắc chắn audio đã sẵn sàng
+        }
+      });
+    </script>
     
     <!-- Hiệu ứng bạch nguyệt quang bên trái -->
     <div class="moonlight-effect moonlight-left">
@@ -44,7 +73,7 @@
             <div class="letter-corner corner-br"></div>
             <div class="message">
               <div class="lyrics">
-                <div class="lyric-page active" id="page1"><p>Nguyễn Văn Nghĩa gửi mọi người,...❤️ </p></div>
+                <div class="lyric-page active" id="page1"><p>Nguyễn Thế Hưng gửi mọi người,...❤️ </p></div>
                 <div class="lyric-page" id="page2"><p>Nhân ngày Phụ nữ Việt Nam 20/10, con/cháu xin chúc mẹ/bà/dì luôn mạnh khỏe, hạnh phúc và luôn giữ nụ cười rạng rỡ trên môi,</p></div>
                 <div class="lyric-page" id="page3"><p>Mong rằng mỗi ngày trôi qua, mọi người đều được sống trong bình an, yêu thương và nụ cười rạng rỡ.</p></div>
                 <div class="lyric-page" id="page4"><p>20/10 thật ý nghĩa và ngập tràn hoa, quà, cùng những lời chúc chân thành nhất gửi đến những “bông hoa tuyệt vời” trong gia đình chúng ta! 🌹💖</p></div>
